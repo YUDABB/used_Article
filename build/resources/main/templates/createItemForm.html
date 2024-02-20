@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+    <meta charset="utf-8">
+    <title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">상품등록</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="/item">Home</a></li>
+                    <li class="active">상품등록</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+                <form th:action="@{/item/new}" th:object="${form}" method="post" enctype="multipart/form-data">
+                    <div th:replace="~{form_errors :: formErrorsFragment}"></div>
+                    <div class="billing-details">
+                        <div class="form-group">
+                            <label>상품 이름</label>
+                            <input class="input" type="text" name="username"  th:field="*{name}" placeholder="상품이름을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label>가격</label>
+                            <input class="input" type="number"  th:field="*{price}"  placeholder="가격을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label>수량</label>
+                            <input class="input" type="number"  th:field="*{item_count}" placeholder="수량을 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label>상세 정보</label>
+                            <input class="input" type="text"  th:field="*{detail}" placeholder="상세 정보를 입력하세요">
+                        </div>
+                        <div class="form-group">
+                            <label>이미지</label>
+                            <input type="file" name="file"  placeholder="이미지를 업로드하세요">
+                        </div>
+                        <button type="submit" class="primary-btn order-submit">상품등록하기</button>
+                    </div>
+                </form>
+                <!-- /Billing Details -->
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+    <div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+	<meta charset="utf-8">
+	<title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header">회원가입</h3>
+				<ul class="breadcrumb-tree">
+					<li><a href="/item">Home</a></li>
+					<li class="active">회원가입</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-md-7">
+				<!-- Billing Details -->
+				<form th:action="@{/member/signup}" th:object="${memberForm}" method="post">
+					<div th:replace="~{form_errors :: formErrorsFragment}"></div>
+					<div class="billing-details">
+						<div class="form-group">
+							<label>이름</label>
+							<input class="input" type="text" name="username"  th:field="*{username}" placeholder="이름">
+						</div>
+						<div class="form-group">
+							<label>비밀번호</label>
+							<input class="input" type="password" name="password1" th:field="*{password1}"  placeholder="비밀번호">
+						</div>
+						<div class="form-group">
+							<label>비밀번호 확인</label>
+							<input class="input" type="password" name="password2" th:field="*{password2}" placeholder="비밀번호 확인">
+						</div>
+						<div class="form-group">
+							<label>이메일</label>
+							<input class="input" type="email" name="email" th:field="*{email}" placeholder="이메일">
+						</div>
+						<div class="form-group">
+							<label>주소</label>
+							<input class="input" type="text" name="address" th:field="*{address}" placeholder="주소">
+						</div>
+						<button type="submit" class="primary-btn order-submit">회원가입하기</button>
+					</div>
+				</form>
+				<!-- /Billing Details -->
+
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+	<div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+</body>
+</html>

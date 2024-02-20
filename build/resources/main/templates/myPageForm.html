@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+    <style>
+        /* 추가적인 스타일링이 필요하다면 여기에 추가 */
+        .profile-img {
+            max-width: 80px;
+            height: auto;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- 커스텀 CSS -->
+
+    <meta charset="utf-8">
+    <title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">마이페이지</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="/item">Home</a></li>
+                    <li class="active">마이페이지</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header text-center">마이페이지</div>
+                            <div class="card-body">
+                                <!-- 프로필 이미지 -->
+                                <div class="text-center">
+                                    <img src="/img/profile.jpg" alt="프로필 이미지" class="profile-img">
+                                </div>
+                                <hr>
+                                <!-- 이름 -->
+                                <div class="form-group">
+                                    <label for="name">이름</label>
+                                    <input type="text" class="form-control" id="name" th:value="${member.username}" disabled>
+                                </div>
+                                <!-- 이메일 -->
+                                <div class="form-group">
+                                    <label for="email">이메일</label>
+                                    <input type="email" class="form-control" id="email" th:value="${member.email}" disabled>
+                                </div>
+                                <!-- 주소 -->
+                                <div class="form-group">
+                                    <label for="address">주소</label>
+                                    <input type="text" class="form-control" id="address" th:value="${member.address}" disabled>
+                                </div>
+                                <!-- 버튼 -->
+                                <div class="text-center">
+                                    <div class="text-center">
+                                        <a href="/myItems" class="primary-btn order-submit"> 등록한 상품 </a>
+                                        <a href="/order/list" class="primary-btn order-submit">주문한 상품</a>
+                                    </div> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+<div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+</body>
+</html>

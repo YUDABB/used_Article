@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="fragment/head :: head">
+    <meta charset="utf-8">
+    <title>중고거래사이트</title>
+</head>
+<div class="header" th:fragment="header">
+<!-- HEADER -->
+<header>
+    <!-- TOP HEADER -->
+    <div id="top-header">
+        <div class="container">
+            <ul class="header-links pull-left">
+                <li><a href="/item">중고 물품을 거래하는 사이트입니다.</a></li>
+
+            </ul>
+            <ul class="header-links pull-right">
+                <li>
+                    <a sec:authorize="isAnonymous()" th:href="@{/member/login}"><i class="fa fa-user-o"></i>로그인</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/member/logout}"><i class="fa fa-user-o"></i>로그아웃</a>
+                </li>
+                <li>
+                    <a sec:authorize="isAnonymous()" th:href="@{/member/signup}"><i class="fa fa-user-o"></i></i>회워가입</a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/member/profile}"><i class="fa fa-user-o"></i>마이페이지</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- /TOP HEADER -->
+
+    <!-- MAIN HEADER -->
+    <div id="header">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <!-- LOGO -->
+                <div class="col-md-3">
+                    <div class="header-logo">
+                        <a href="#" class="logo">
+                            <img src="/img/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <!-- /LOGO -->
+
+                <!-- SEARCH BAR -->
+                <div class="col-md-6">
+                    <div class="header-search">
+                        <form id="searchForm" action="/item/search" method="GET">
+                            <select class="input-select" name="option">
+                                <option value="itemName">상품명</option>
+                                <option value="itemStatus">상품 정보</option>
+                            </select>
+                            <input id="keyword" class="input" name="keyword" placeholder="검색하기">
+                            <button type="submit" class="search-btn">검색</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- /SEARCH BAR -->
+
+                <!-- ACCOUNT -->
+                <div class="col-md-3 clearfix">
+                    <div class="header-ctn">
+                        <!-- Wishlist -->
+                        <div>
+                            <a sec:authorize="isAuthenticated()" href="/item/new" >
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <span>상품 등록</span>
+                            </a>
+                        </div>
+                        <!-- /Wishlist -->
+
+                        <!-- Cart -->
+                        <div class="dropdown">
+                            <a sec:authorize="isAuthenticated()" href="/cart/list">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>장바구니</span>
+                                <div class="qty"></div>
+                            </a>
+                        </div>
+                        <!-- /Cart -->
+                    </div>
+                </div>
+                <!-- /ACCOUNT -->
+
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
+</div>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+    <meta charset="utf-8">
+    <title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">주문 목록</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="/item">Home</a></li>
+                    <li><a href="/member/profile">마이페이지</a></li>
+                    <li class="active">주문 목록</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+
+
+        <div class="col-md-12">
+            <!-- Order Details -->
+            <div class="order-details">
+                <div class="section-title text-center">
+                </div>
+                <div class="order-summary">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>회원이름</th>
+                            <th>상품이름</th>
+                            <th>상품 주문가격</th>
+                            <th>상품 주문수량</th>
+                            <th>상태</th>
+                            <th>일시</th>
+                            <th>취소</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item : ${orders}">
+                            <td th:text="${item.member.username}"></td>
+                            <td th:text="${item.orderItems[0].item.name}"></td>
+                            <td th:text="${item.orderItems[0].price}"></td>
+                            <td th:text="${item.orderItems[0].count}"></td>
+                            <td th:text="${item.status}"></td>
+                            <td th:text="${item.date}"></td>
+                            <td>
+                                <form th:if="${item.status.name() == 'ORDER'}" th:action="@{'/order/' + ${item.id} + '/cancel'}" method="post">
+                                    <button type="submit" class="primary-btn">취소</button>
+                                </form>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!-- /Order Details -->
+
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+    <div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+</body>
+</html>

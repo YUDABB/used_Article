@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+	<meta charset="utf-8">
+	<title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="breadcrumb-header">로그인</h3>
+				<ul class="breadcrumb-tree">
+					<li><a href="/item">Home</a></li>
+					<li class="active">로그인</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /row -->
+	</div>
+	<!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+	<!-- container -->
+	<div class="container">
+		<!-- row -->
+		<div class="row">
+
+			<div class="col-md-7">
+				<!-- Billing Details -->
+				<form th:action="@{/member/login}" method="post">
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">
+							사용자이름 또는 비밀번호를 확인해 주세요.
+						</div>
+					</div>
+					<div class="billing-details">
+						<div class="form-group">
+							<label>이름</label>
+							<input class="input" type="text" name="username"  id="username" placeholder="이름">
+						</div>
+						<div class="form-group">
+							<label>비밀번호</label>
+							<input class="input" type="password" name="password" id="password"  placeholder="비밀번호">
+						</div>
+						<button type="submit" class="primary-btn order-submit">로그인하기</button>
+					</div>
+				</form>
+				<!-- /Billing Details -->
+
+			</div>
+			<!-- /row -->
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /SECTION -->
+
+	<div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+</body>
+</html>
