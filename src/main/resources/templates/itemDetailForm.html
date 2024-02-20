@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragment/head :: head}">
+    <meta charset="utf-8">
+    <title>중고거래사이트</title>
+</head>
+<body>
+
+<div th:replace="~{fragment/header :: header}" />
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb-tree">
+                    <li><a href="/item">Home</a></li>
+                    <li><a href="#" th:text="${item.name}"></a></li>
+
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <!-- Product main img -->
+            <div class="col-md-5 col-md-push-2">
+                <div id="product-main-img">
+                    <div class="product-preview">
+                        <img th:src="@{${item.imgPath}}" alt="이미지"/>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Product main img -->
+
+            <!-- Product thumb imgs -->
+            <div class="col-md-2  col-md-pull-5">
+                <div id="product-imgs">
+                    <div class="product-preview">
+                        <img th:src="@{${item.imgPath}}" alt="이미지"/>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /Product thumb imgs -->
+
+
+
+            <!-- Product details -->
+            <div class="col-md-5">
+                <form th:action="@{'/cart/' + ${item.id}}" method="post">
+                    <div class="product-details">
+                        <h2 class="product-name" th:text="${item.name}"></h2>
+                        <div>
+                            <h3 class="product-price" th:text="${item.price}"></h3>
+                        </div>
+                        <p th:text="${item.detail}"></p>
+                        <div class="add-to-cart">
+                            <div class="qty-label">
+                                주문수량
+                                <div class="input-number">
+                                    <input class="input form-control" name="count" type="number">
+                                    <span class="qty-up">+</span>
+                                    <span class="qty-down">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="add-to-cart">
+                            <button class="add-to-cart-btn" name="action" value="cart" ><i class="fa fa-shopping-cart"></i>장바구니에 담기</button>
+                            <button class="add-to-cart-btn" name="action" value="order"><i class="fa fa-shopping-cart"></i>주문하기</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!-- /Product details -->
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="~{fragment/footer :: footer}" />
+</div>
+
+
+</body>
+
+<script layout:fragment="script" type='text/javascript'>
+    const recommend_elements = document.getElementsByClassName("recommend");
+    Array.from(recommend_elements).forEach(function (element) {
+        element.addEventListener('click', function () {
+            if (confirm("정말로 주문하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+</script>
+
+</html>
