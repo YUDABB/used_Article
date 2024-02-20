@@ -2,15 +2,9 @@
 
 - 이 사이트는 중고 물품을 거래할 수 있는 사이트입니다. Spring Boot를 사용해 간단한 중고 거래 사이트를 만들어봤습니다.
 - **ERD 구조**
-- 
+  
 ![스크린샷 2024-02-19 225756](https://github.com/YUDABB/used_Article/assets/114066269/6a88628c-7045-41c6-8871-95112d8a1b61)
-
-
-- **API 명세서**
-    
-[API 명세서   ](https://www.notion.so/2147a3d921cd4e7fb3a2bf6ad82b2d37?pvs=21)
-    
-                                                                 
+                                              
 
 ## 🛠️ 사용 기술 및 라이브러리
 
